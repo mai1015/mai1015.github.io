@@ -1,8 +1,9 @@
 ---
 layout: post
 title: how bit torrent works
-category: note
-tags: [web, network]
+category: Note
+tags: [Web, Network]
+comments: true
 ---
 Bit torrent is currently pretty popular way to download, beside this, there is PT as well.
 
