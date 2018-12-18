@@ -7,4 +7,4 @@ Hello, this is my new personal space to post blog and experiences.
 
 I will update some note and tutorial from my learning.
 
-[RSS feed]({{ "/" | relative_url }}/atom.xml)
+[RSS feed](/atom.xml)
