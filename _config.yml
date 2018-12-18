@@ -1,1 +1,32 @@
-theme: jekyll-theme-minimal
+# Permalinks
+permalink:           pretty
+
+# Setup
+title:               mai1015
+tagline:             underdevelopment
+url:                 http://www.mai1015.com/
+paginate:            5
+baseurl:             "/"
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+# About/contact
+author:
+  name:              mai1015
+  url:               https://github.com/mai1015
+  email:             i#mai1015.com
+
+# Custom vars
+version:             2.0.0
+github:
+  repo:              https://github.com/poole/poole
+
+# Gems
+gems:
+  - jekyll-paginate
+  - jekyll-gist
