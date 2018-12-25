@@ -31,3 +31,5 @@ gems:
   - jekyll-paginate
   - jekyll-gist
   - jekyll-github-metadata
+
+markdown: kramdown
