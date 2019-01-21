@@ -2,7 +2,7 @@
 layout: post
 title: Define New Conversions for printf
 category: C
-published: false
+published: true
 tags: [C]
 comments: true
 ---

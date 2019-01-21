@@ -2,7 +2,7 @@
 layout: post
 title: Full page background with css3
 category: HTML
-published: false
+published: true
 tags: [HTML,CSS3]
 comments: true
 ---
