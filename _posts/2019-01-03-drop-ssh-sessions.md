@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Drop Inactive SSH Sessions
-category: Note
+category: Linux
 tags: [Linux, SSH]
 comments: true
 ---

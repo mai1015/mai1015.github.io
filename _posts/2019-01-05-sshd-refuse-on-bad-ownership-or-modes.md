@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SSH refuse on bad ownership or modes
-category: Note
+category: Linux
 tags: [Linux, SSH]
 comments: true
 ---
