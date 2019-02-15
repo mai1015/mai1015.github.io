@@ -8,7 +8,7 @@ comments: true
 C pointer is powerful that can point to anywhere with good definition. Here are collections of interesting way to use pointer.
 
 |definition        | meaning                                               | link                  |
-|------------------|:-----------------------------------------------------:|:---------------------:|
+|------------------|-------------------------------------------------------|:---------------------:|
 |`type *i;`        | simple pointer                                        | [here](#type-i)       |
 |`type *i[n];`     | array of n pointer                                    | [here](#type-in)      |
 |`type (*p)[n];`   | a pointer to an array of n                            | [here](#type-pn)      |
