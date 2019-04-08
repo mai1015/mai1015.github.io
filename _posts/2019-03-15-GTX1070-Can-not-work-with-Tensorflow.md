@@ -23,3 +23,6 @@ session = tf.Session(config=config...)
 ```
 
 It works well when I modify the config "allow_growth" to true. Then it can use GPU to train the networked lighting fast.
+
+UPDATE 2019-04-05:
+It was working well for some time. However, I found some serious problem with the graphic card. My GTX1070 crash everything if the memory usage exceed 3 GB. I found it when I was playing BF5. Now, I have sent the graphic card to repaired. So, if you run into some problem like this, you should try to check if your graphic card is working in a good condition.
