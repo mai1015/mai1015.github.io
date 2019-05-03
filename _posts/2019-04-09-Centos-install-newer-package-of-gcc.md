@@ -19,7 +19,7 @@ sudo yum install centos-release-scl
 sudo yum-config-manager --enable rhel-server-rhscl-7-rpms
 ```
 
-3. Install the cllections
+3. Install the collections
 ```bash
 sudo yum install devtoolset-7
 ```
