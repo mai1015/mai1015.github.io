@@ -15,7 +15,7 @@ Installation will be easier. For git, just run `sudo apt install git`.
 
 I try to let IDE (Intellij IDEA) to run git through `wsl`, I found a bat file from [here](https://stackoverflow.com/questions/43666009/using-git-in-windows-subsystem-for-linux-through-intellij).
 
-```batch
+```
 @echo off
 setlocal enabledelayedexpansion
 set command=%*
