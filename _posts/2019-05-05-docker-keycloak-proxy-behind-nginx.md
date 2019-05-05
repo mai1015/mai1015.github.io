@@ -38,7 +38,7 @@ services:
 ```
 It is important to add `PROXY_ADDRESS_FORWARDING=true` since we want to working with reverse proxy nginx.
 
-We can then run the file with `docker-compose -f keycloak.yml up`. However, it does not work because of the message `Failed to start service org.wildfly.network.interface.private`. There is nothing I can find on the internet, but it works fine on my other computer. It should be a problem with docker in Ubuntu. So, I have used another way.
+We can then run the file with `docker-compose -f keycloak.yml up`. However, it does not work because of the message `Failed to start service org.wildfly.network.interface.private`. There is nothing I can find on the internet, but it works fine on my other computer. It should be a problem with docker in Ubuntu. So, I have used another way. Please comment if you anything related to the issue.
 
 ## MYSQL
 We have to know the IP address of the host in the container. So, I found this command `ip route show | awk '/default/ {print $3}'`. It will show the host IP in the docker. We can simply do it like `docker run --rm alpine ip route show | awk '/default/ {print $3}'`, and we will see the IP in terminal. For me, the IP is `172.17.0.1`. So I add `DB_ADDR=172.17.0.1` into the environment. And let myself listen to IP address `0.0.0.0` then the container is allowed to connect to the service.
@@ -56,8 +56,7 @@ or we can simply do `GRANT ALL PRIVILEGES ON `keycloak`.* To 'keycloak'@'172.*' 
 ## NGINX
 We want to proxy it with `nginx` so we do not need to convert certificate. It is easier to replace and do not stop the keycloak service. So, I obtain a certificate with `certbot` and activate it with Nginx configuration like this.
 
-<details><summary>nginx host configuration</summary>
-<p>
+### nginx host configuration
 ```nginx
 server {
     listen 80;
@@ -121,8 +120,6 @@ server {
     # ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 }
 ```
-</p>
-</details>
 
 So those configurations are important to allow keycloak to work correctly. Without `Host` header will break the `redirect_url`.
 ```nginx
