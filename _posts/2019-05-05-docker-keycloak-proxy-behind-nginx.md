@@ -5,14 +5,14 @@ category: Development
 tags: [Linux, Development, Docker]
 comments: true
 ---
-Keycloak is an open source Identity and Access Management software that is part of Red Hat project. It provided OAuth and SSO support for your application and software. It is easy to setup, but you need to download the dependency and setup in confiugration file. We can use docker to set this up easily.
+Keycloak is an open source Identity and Access Management software that is part of Red Hat project. It provided OAuth and SSO support for your application and software. It is easy to set up, but you need to download the dependency and set up in the configuration file. We can use Docker to set this up easily.
 
-From [github](https://github.com/jboss-dockerfiles/keycloak) repository, we can find the information about keycloak docker. One of the simple setup is `docker run -e KEYCLOAK_USER=<USERNAME> -e KEYCLOAK_PASSWORD=<PASSWORD> jboss/keycloak`. Then it is going up and running. We can have a database connection when we set `DB_VENDOR` environment variable. There are sample setup for keycloak with mysql. It is pretty easy with docker.
+From [github](https://github.com/jboss-dockerfiles/keycloak) repository, we can find the information about Keycloak for Docker. One of the simple setups is `docker run -e KEYCLOAK_USER=<USERNAME> -e KEYCLOAK_PASSWORD=<PASSWORD> jboss/keycloak`. Then it is going up and running. We can have a database connection when we set `DB_VENDOR` environment variable. There is a sample setup for Keycloak with MySQL. It is pretty easy with docker.
 
-However, I do not need multiple mysql instance running. I prefer single mysql service at my localhost. So, we need to connect host mysql within the continer. We have to locate the host ip address from container. Docker used to proivde `host.docker.internal` to resolve host ip address. However, it resolve to nothing in Ubuntu docker. I found a simple work around from [here](https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach).
+However, I do not need multiple MySQL instances running. I prefer a single MySQL service at my localhost. So, we need to connect host MySQL within the container. We have to locate the host IP address from the container. Docker used to provide `host.docker.internal` to resolve the host IP address. However, it resolves to nothing in Ubuntu docker. I found a simple workaround from [here](https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach).
 
 ## SETUP
-Basically, it set the network mode to `host`, so localhost can access the actual machine. so I set it with `docker-compose` with `network_mode: host`. So the sample compose setup will look like this. With the file, we can set the database clear. The file is generated with `jhipster`, and I modify it to connect it to the database.
+Basically, it set the network mode to `host`, so localhost can access the actual machine. so I set it with `docker-compose` with `network_mode: host`. So the sample `compose` setup will look like this. With the file, we can set the database clear. The file is generated with `jhipster`, and I modify it to connect it to the database.
 
 ```yaml
 version: '2'
@@ -38,12 +38,12 @@ services:
 ```
 It is important to add `PROXY_ADDRESS_FORWARDING=true` since we want to working with reverse proxy nginx.
 
-We can then run the file with `docker-compose -f keycloak.yml up`. However, it does not work because of the message `Failed to start service org.wildfly.network.interface.private`. There is nothing I can find on the internet, but it works fine on my other computer. It should be a problem with docker in Ubuntu. So, I have use another way.
+We can then run the file with `docker-compose -f keycloak.yml up`. However, it does not work because of the message `Failed to start service org.wildfly.network.interface.private`. There is nothing I can find on the internet, but it works fine on my other computer. It should be a problem with docker in Ubuntu. So, I have used another way.
 
 ## MYSQL
-We have to know the ip address of the host in the container. So, I found this command `ip route show | awk '/default/ {print $3}'`. It will show the host ip in the docker. We can simply do it like `docker run --rm alpine ip route show | awk '/default/ {print $3}'`, and I will see the ip. For me, the ip is `172.17.0.1`. So I add `DB_ADDR=172.17.0.1` into the environment. And let mysql listen to ip `0.0.0.0` then the container is allow to connected to the serivce.
+We have to know the IP address of the host in the container. So, I found this command `ip route show | awk '/default/ {print $3}'`. It will show the host IP in the docker. We can simply do it like `docker run --rm alpine ip route show | awk '/default/ {print $3}'`, and we will see the IP in terminal. For me, the IP is `172.17.0.1`. So I add `DB_ADDR=172.17.0.1` into the environment. And let myself listen to IP address `0.0.0.0` then the container is allowed to connect to the service.
 
-One more thing is the mysql user. We can add a user with remote access, but it is not safe. So I add the user in mysql with sql command.
+One more thing is the MySQL user. We can add a user with remote access, but it is not safe. So I add the user in MySQL with SQL command.
 
 ```sql
 CREATE USER 'keycloak'@'172.*' IDENTIFIED BY 'password';
@@ -54,9 +54,9 @@ FLUSH PRIVILEGES;
 or we can simply do `GRANT ALL PRIVILEGES ON `keycloak`.* To 'keycloak'@'172.*' IDENTIFIED BY 'password';`. They both work well with `mariadb-10.3.14`.
 
 ## NGINX
-We want to proxy it with `nginx` so we do not need to convert certificate. It is eaiser to replace and do not stop the keycloak service. So, I obtian certificate with `certbot` and activate it with nginx configurate like this.
+We want to proxy it with `nginx` so we do not need to convert certificate. It is easier to replace and do not stop the keycloak service. So, I obtain a certificate with `certbot` and activate it with Nginx configuration like this.
 
-<details><summary>nginx file</summary>
+<details><summary>nginx host configuration</summary>
 <p>
 ```nginx
 server {
@@ -124,7 +124,7 @@ server {
 </p>
 </details>
 
-So those configurates are important to allow keycloak to work correctly. Without `Host` header will break the `redirect_url`.
+So those configurations are important to allow keycloak to work correctly. Without `Host` header will break the `redirect_url`.
 ```nginx
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -133,4 +133,4 @@ So those configurates are important to allow keycloak to work correctly. Without
     proxy_set_header Host $host;
 ```
 
-So we have a fully configurated keycloak working behind reverse proxy nginx. 
+So we have a fully configurated keycloak working behind reverse proxy Nginx. 
