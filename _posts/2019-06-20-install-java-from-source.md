@@ -31,4 +31,4 @@ It works well on Java 8, so I have to install one more version. However, I canno
 8. write `$JAVA_HOME` to specify location.
    I write it to `/usr/lib/jvm/default-java` and link to directory with `ln`.
 
-Then when you switch version, you just change the link to specify version.
+Then when you switch version, you just change the link to specify version. Inspired by [Rahul](https://tecadmin.net/switch-between-java-versions-on-debian/).
