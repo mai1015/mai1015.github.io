@@ -13,7 +13,7 @@ When specifying a class, sometimes it is necessary to have an interface so you c
 
     If you have multiple implementations, you can choose the one that is primarily used. Then apply `@Primary`, the application will automate wire all related interface to this implementation.
 
-```Java
+```java
 public interface A {
 	void a();
 }
@@ -36,7 +36,7 @@ public class C implements A {
 
 	If you need to choose between different implementation, you should use `@Qualifier`.
 
-```Java
+```java
 public interface A {
 	void a();
 }
@@ -56,7 +56,7 @@ public class C implements A {
 
 	If you need implementation C, you can specify with `@Qualifier`.
 
-```Java
+```java
 @Component
 public static class FirstManager {
 
