@@ -7,7 +7,7 @@ hidden: false
 tags: [EECS3482,social engineering]
 comments: true
 ---
-This [page](/amazon) is intended to show how I do during a social engineering phishing in EECS3482 at York University. This is not going to record any of the data you put in the form.
+This [page](/projects/amazon) is intended to show how I do during a social engineering phishing in EECS3482 at York University. This is not going to record any of the data you put in the form.
 
 The process is simple, just download the whole page and modify the form. and it is done. It requires some HTML skill to understand how it works.
 
