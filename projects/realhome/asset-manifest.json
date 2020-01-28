@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/projects/realhome/static/css/main.e17a5d9b.chunk.css",
+    "main.js": "/projects/realhome/static/js/main.bbe79e4c.chunk.js",
+    "main.js.map": "/projects/realhome/static/js/main.bbe79e4c.chunk.js.map",
+    "runtime-main.js": "/projects/realhome/static/js/runtime-main.77646439.js",
+    "runtime-main.js.map": "/projects/realhome/static/js/runtime-main.77646439.js.map",
+    "static/css/2.c7b90ac4.chunk.css": "/projects/realhome/static/css/2.c7b90ac4.chunk.css",
+    "static/js/2.0afdcd41.chunk.js": "/projects/realhome/static/js/2.0afdcd41.chunk.js",
+    "static/js/2.0afdcd41.chunk.js.map": "/projects/realhome/static/js/2.0afdcd41.chunk.js.map",
+    "index.html": "/projects/realhome/index.html",
+    "precache-manifest.0452bbc31a097b353521f6f38614794d.js": "/projects/realhome/precache-manifest.0452bbc31a097b353521f6f38614794d.js",
+    "service-worker.js": "/projects/realhome/service-worker.js",
+    "static/css/2.c7b90ac4.chunk.css.map": "/projects/realhome/static/css/2.c7b90ac4.chunk.css.map",
+    "static/css/main.e17a5d9b.chunk.css.map": "/projects/realhome/static/css/main.e17a5d9b.chunk.css.map",
+    "static/js/2.0afdcd41.chunk.js.LICENSE": "/projects/realhome/static/js/2.0afdcd41.chunk.js.LICENSE",
+    "static/media/PageNotFound.png": "/projects/realhome/static/media/PageNotFound.350a5201.png",
+    "static/media/bed.png": "/projects/realhome/static/media/bed.ebf602aa.png",
+    "static/media/chair.png": "/projects/realhome/static/media/chair.ce9c29f1.png",
+    "static/media/chirs.png": "/projects/realhome/static/media/chirs.03ed1f43.png",
+    "static/media/images-solid.svg": "/projects/realhome/static/media/images-solid.6873bb5f.svg",
+    "static/media/main.scss": "/projects/realhome/static/media/imgback-white.e21ddc76.jpg",
+    "static/media/imgback.jpg": "/projects/realhome/static/media/imgback.d5eab515.jpg",
+    "static/media/parking.png": "/projects/realhome/static/media/parking.6f6bc685.png",
+    "static/media/rachel.png": "/projects/realhome/static/media/rachel.6ab70858.png",
+    "static/media/remax.png": "/projects/realhome/static/media/remax.f56ef1a2.png",
+    "static/media/remax_one.png": "/projects/realhome/static/media/remax_one.0a1ad619.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.77646439.js",
+    "static/css/2.c7b90ac4.chunk.css",
+    "static/js/2.0afdcd41.chunk.js",
+    "static/css/main.e17a5d9b.chunk.css",
+    "static/js/main.bbe79e4c.chunk.js"
+  ]
+}
