@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/projects/realhome/static/css/main.e17a5d9b.chunk.css",
-    "main.js": "/projects/realhome/static/js/main.bbe79e4c.chunk.js",
-    "main.js.map": "/projects/realhome/static/js/main.bbe79e4c.chunk.js.map",
+    "main.js": "/projects/realhome/static/js/main.9fe56a4d.chunk.js",
+    "main.js.map": "/projects/realhome/static/js/main.9fe56a4d.chunk.js.map",
     "runtime-main.js": "/projects/realhome/static/js/runtime-main.77646439.js",
     "runtime-main.js.map": "/projects/realhome/static/js/runtime-main.77646439.js.map",
     "static/css/2.c7b90ac4.chunk.css": "/projects/realhome/static/css/2.c7b90ac4.chunk.css",
-    "static/js/2.0afdcd41.chunk.js": "/projects/realhome/static/js/2.0afdcd41.chunk.js",
-    "static/js/2.0afdcd41.chunk.js.map": "/projects/realhome/static/js/2.0afdcd41.chunk.js.map",
+    "static/js/2.6661347b.chunk.js": "/projects/realhome/static/js/2.6661347b.chunk.js",
+    "static/js/2.6661347b.chunk.js.map": "/projects/realhome/static/js/2.6661347b.chunk.js.map",
     "index.html": "/projects/realhome/index.html",
-    "precache-manifest.0452bbc31a097b353521f6f38614794d.js": "/projects/realhome/precache-manifest.0452bbc31a097b353521f6f38614794d.js",
+    "precache-manifest.094d8ec88cd9a3cdb688800fbde7e2e6.js": "/projects/realhome/precache-manifest.094d8ec88cd9a3cdb688800fbde7e2e6.js",
     "service-worker.js": "/projects/realhome/service-worker.js",
     "static/css/2.c7b90ac4.chunk.css.map": "/projects/realhome/static/css/2.c7b90ac4.chunk.css.map",
     "static/css/main.e17a5d9b.chunk.css.map": "/projects/realhome/static/css/main.e17a5d9b.chunk.css.map",
-    "static/js/2.0afdcd41.chunk.js.LICENSE": "/projects/realhome/static/js/2.0afdcd41.chunk.js.LICENSE",
+    "static/js/2.6661347b.chunk.js.LICENSE": "/projects/realhome/static/js/2.6661347b.chunk.js.LICENSE",
     "static/media/PageNotFound.png": "/projects/realhome/static/media/PageNotFound.350a5201.png",
     "static/media/bed.png": "/projects/realhome/static/media/bed.ebf602aa.png",
     "static/media/chair.png": "/projects/realhome/static/media/chair.ce9c29f1.png",
@@ -29,8 +29,8 @@
   "entrypoints": [
     "static/js/runtime-main.77646439.js",
     "static/css/2.c7b90ac4.chunk.css",
-    "static/js/2.0afdcd41.chunk.js",
+    "static/js/2.6661347b.chunk.js",
     "static/css/main.e17a5d9b.chunk.css",
-    "static/js/main.bbe79e4c.chunk.js"
+    "static/js/main.9fe56a4d.chunk.js"
   ]
 }
