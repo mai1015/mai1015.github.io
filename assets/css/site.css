@@ -257,6 +257,7 @@ main { flex: 1 0 auto; width: 100%; max-width: var(--col); }
 .prose th { background: var(--sunk); font-weight: 600; }
 .prose code { font-family: var(--f-mono); font-size: .86em; }
 .prose :not(pre) > code { padding: .12em .38em; border-radius: var(--r-1); background: var(--sunk); overflow-wrap: anywhere; }
+.prose td > code, .prose th > code { white-space: nowrap; overflow-wrap: normal; }
 .prose pre { font-size: .875rem; line-height: 1.6; tab-size: 4; }
 .prose pre {
   overflow-x: auto; padding: var(--s-4); border: 1px solid var(--rule); border-radius: var(--r-2);
