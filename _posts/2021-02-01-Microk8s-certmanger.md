@@ -8,7 +8,7 @@ comments: true
 # Install
 First you will need to install microk8s and enable `helm3` and `ingress` using `microk8s enable helm3 ingress`.
 
-Then install cert-manager with helm with following cmd by (Envekus)[https://www.reddit.com/r/kubernetes/comments/g3z5sp/microk8s_with_certmanager_and_letsecncrypt/].
+Then install cert-manager with helm with following cmd by [Envekus](https://www.reddit.com/r/kubernetes/comments/g3z5sp/microk8s_with_certmanager_and_letsecncrypt/).
 ```bash
 microk8s kubectl create namespace cert-manager
 microk8s helm3 repo add jetstack https://charts.jetstack.io

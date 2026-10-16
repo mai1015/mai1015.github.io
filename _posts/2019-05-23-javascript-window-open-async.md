@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Javascript open new Window blocked when asynchronous
-category: Javascript
+category: JavaScript
 tags: [Javascript, Vue, async, Typescript]
 comments: true
 ---

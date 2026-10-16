@@ -10,6 +10,11 @@
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://www.mai1015.com/resume/">
 <link rel="canonical" href="https://www.mai1015.com/resume/">
+<meta property="og:image" content="https://www.mai1015.com/assets/og/resume.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The top of Zhili Mai's resume page: name, summary and screenshots of Zerkov, Forge and Smith">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ECEEF1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1216" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23C8410B'/%3E%3Cpath d='M7 10h9v2.4l-5.6 7.2H16V22H6.6v-2.4l5.6-7.2H7zM18 10h2.6l2.2 6.4L25 10h2.4v12h-2.2v-7.2L23.6 20h-1.7l-1.7-5.2V22H18z' fill='%23fff'/%3E%3C/svg%3E">
@@ -20,9 +25,9 @@ try {
 } catch (e) {}
 </script>
 <!-- shared:start -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<link rel="preload" href="/assets/fonts/archivo-normal-700-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-normal-400-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css?v=1">
 <style>
 /* Layout: a spec sheet on a 12-column grid. The hero pairs the name with a cascade of
    real captures; a sticky track switch re-cuts everything below it for one kind of role. */
@@ -369,6 +374,48 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
   .icon-btn { width: 44px; height: 44px; }
   .switch button, .btn, .mail a, .mail button { min-height: 44px; }
 }
+
+/* Print: a text resume on Letter paper. Screenshots, controls and the view switch are screen-only. */
+.print-only { display: none; }
+@media print {
+  @page { size: Letter; margin: 12mm 13mm; }
+  :root, :root[data-theme="dark"] {
+    --ground: #FFFFFF; --surface: #FFFFFF; --sunk: #F1F3F5;
+    --ink: #14181F; --ink-2: #333A46; --ink-3: #555E6D;
+    --rule: #D3D7DE; --rule-strong: #AEB5C0;
+    --signal: #C8410B; --signal-ink: #AD3A08; color-scheme: light;
+  }
+  html { font-size: 8.6pt; }
+  body { background: #fff; }
+  .skip, .nav, .icon-btn, .cascade, .viewbar, .entry-figs, .strip, #viewer, .actions,
+  .view-note, .foot, [data-copy], .sec-head p, .links span, .meta { display: none !important; }
+  .print-only { display: block; }
+  .print-contact { font: 400 .9375rem/1.4 var(--f-mono); color: var(--ink-2); }
+  .wrap { max-width: none; padding-inline: 0; }
+  .hero-band, .hero { padding: 0; }
+  .top { padding-block: 0 1.5mm; }
+  .hero { display: block; }
+  .hero-copy { gap: 1.5mm; }
+  #name { font-size: 26pt; }
+  .lead { font-size: 10pt; max-width: none; }
+  main section { padding-block: 4mm 0 !important; }
+  .sec-head { margin-bottom: 1.5mm; max-width: none; break-after: avoid; }
+  h2 { font-size: 13pt !important; break-after: avoid; }
+  h3 { font-size: 11pt !important; }
+  .stack-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2mm 5mm; }
+  .stack-col { gap: 1mm; }
+  .entry, .role { padding-block: 2.2mm; break-inside: avoid; }
+  .entry { display: block; }
+  .entry-text, .role-body { gap: 1mm; }
+  .entry-text > p, .points li, .sec-head p { max-width: none; }
+  .entry-kind { font-size: 1rem; }
+  .points { gap: .4mm; }
+  .points li { font-size: .9375rem; line-height: 1.4; }
+  .role { display: grid; grid-template-columns: 38mm minmax(0, 1fr); column-gap: 5mm; }
+  .row { break-inside: avoid; padding-block: 1.2mm; }
+  #contact { display: none !important; }
+  a { color: var(--ink); text-decoration: none; }
+}
 </style>
 <!-- shared:end -->
 </head>
@@ -396,6 +443,7 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
     <div class="hero-copy">
       <p class="label">Software engineer</p>
       <h1 id="name">Zhili Mai</h1>
+      <p class="print-only print-contact">i@mai1015.com · github.com/mai1015 · linkedin.com/in/zhili-mai-361066136 · www.mai1015.com/resume</p>
       <p class="lead" data-t="all">I build backend services, Rust developer tools and game clients. I work in Go, TypeScript, Rust and C++, and connect APIs, data workflows and client code with the builds and releases that ship them.</p>
       <p class="lead" data-t="backend" hidden>Software engineer with experience developing backend services, game platforms and web applications. I work across Go, TypeScript and Rust, connecting APIs, data workflows and client interfaces with deployment and operational needs.</p>
       <p class="lead" data-t="rust" hidden>Software engineer with Rust creator-tool, SDK and service experience, plus native client integration and backend development. I build practical tooling around HTTP APIs, asset processing, persistent workflows and release automation.</p>
@@ -408,20 +456,21 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
         <a class="btn" href="https://github.com/mai1015" target="_blank" rel="noopener">GitHub<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         <a class="btn" href="https://www.linkedin.com/in/zhili-mai-361066136/" target="_blank" rel="noopener">LinkedIn<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         <a class="btn" href="/">Blog</a>
+        <a class="btn" href="/resume/zhili-mai-resume.pdf" download>PDF</a>
       </div>
     </div>
 
     <div class="cascade" role="group" aria-label="Screenshots from three independent projects">
       <button class="plate c-back" type="button" data-full="assets/img/zerkov-raid.webp" data-cap="Zerkov · Raid HUD">
-        <img src="assets/img/zerkov-raid-800.webp" width="1600" height="900" alt="Zerkov, a top-down pixel-art extraction game, showing a forest compound with a raid timer and ammunition HUD">
+        <img src="assets/img/zerkov-raid-800.webp" srcset="assets/img/zerkov-raid-480.webp 480w, assets/img/zerkov-raid-800.webp 800w" sizes="(min-width: 900px) 330px, 70vw" width="1600" height="900" alt="Zerkov, a top-down pixel-art extraction game, showing a forest compound with a raid timer and ammunition HUD">
         <span class="plate-cap"><span>Zerkov</span><span class="cap-what">Raid</span></span>
       </button>
       <button class="plate c-mid" type="button" data-full="assets/img/forge-board.webp" data-cap="Forge · Task board">
-        <img src="assets/img/forge-board-800.webp" srcset="assets/img/forge-board-800.webp 800w, assets/img/forge-board.webp 1600w" sizes="(min-width: 900px) 420px, 80vw" width="1600" height="1000" fetchpriority="high" alt="Forge web UI showing a board of coding-agent tasks moving through backlog, todo, in progress, review and done">
+        <img src="assets/img/forge-board-800.webp" srcset="assets/img/forge-board-480.webp 480w, assets/img/forge-board-800.webp 800w, assets/img/forge-board.webp 1600w" sizes="(min-width: 900px) 380px, 80vw" width="1600" height="1000" fetchpriority="high" alt="Forge web UI showing a board of coding-agent tasks moving through backlog, todo, in progress, review and done">
         <span class="plate-cap"><span>Forge</span><span class="cap-what">Task board</span></span>
       </button>
       <button class="plate c-front" type="button" data-full="assets/img/smith-approval.webp" data-cap="Smith · Shell approval">
-        <img src="assets/img/smith-approval.webp" width="1032" height="752" alt="Smith terminal session asking for approval before running a host shell command, listing the access it grants">
+        <img src="assets/img/smith-approval.webp" srcset="assets/img/smith-approval-480.webp 480w, assets/img/smith-approval.webp 1032w" sizes="(min-width: 900px) 260px, 54vw" width="1032" height="752" alt="Smith terminal session asking for approval before running a host shell command, listing the access it grants">
         <span class="plate-cap"><span>Smith</span><span class="cap-what">Approval</span></span>
       </button>
     </div>
@@ -503,12 +552,12 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
       <article class="entry" data-t="all backend rust games" aria-labelledby="anamon-h">
         <div class="entry-figs">
           <button class="plate" type="button" data-main data-full="assets/img/anamon-slot.webp" data-cap="Anamon · Slot mini-game">
-            <img src="assets/img/anamon-slot-800.webp" srcset="assets/img/anamon-slot-800.webp 800w, assets/img/anamon-slot.webp 1600w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1600" height="1000" loading="lazy" decoding="async" alt="Three phone screens of the Anamon Royale slot mini-game with sample data: the machine signed in with level, XP, a wallet address and 12 spins left; a three-of-a-kind result; and the leaderboard with the player's own rank pinned at the bottom">
+            <img src="assets/img/anamon-slot-800.webp" srcset="assets/img/anamon-slot-480.webp 480w, assets/img/anamon-slot-800.webp 800w, assets/img/anamon-slot.webp 1600w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1600" height="1000" loading="lazy" decoding="async" alt="Three phone screens of the Anamon Royale slot mini-game with sample data: the machine signed in with level, XP, a wallet address and 12 spins left; a three-of-a-kind result; and the leaderboard with the player's own rank pinned at the bottom">
             <span class="plate-cap"><span>Anamon</span><span class="cap-what">Slot mini-game</span></span>
           </button>
           <div class="strip" role="group" aria-label="Anamon screenshots">
-            <button class="thumb" type="button" aria-pressed="true" data-shot data-full="assets/img/anamon-slot.webp" data-small="assets/img/anamon-slot-800.webp" data-what="Slot mini-game" data-cap="Anamon · Slot mini-game" data-alt="Three phone screens of the Anamon Royale slot mini-game with sample data: the machine signed in with level, XP, a wallet address and 12 spins left; a three-of-a-kind result; and the leaderboard with the player's own rank pinned at the bottom"><img src="assets/img/anamon-slot-800.webp" width="1600" height="1000" loading="lazy" decoding="async" alt=""><span>Slot mini-game</span></button>
-            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/anamon-web-client.webp" data-small="assets/img/anamon-web-client-800.webp" data-what="Web client" data-cap="Anamon · Web client" data-alt="Anamon web client home page: the game logo over forest artwork, with navigation for marketplace, play, lore and FAQ, a side menu and a connect-wallet button"><img src="assets/img/anamon-web-client-800.webp" width="1440" height="812" loading="lazy" decoding="async" alt=""><span>Web client</span></button>
+            <button class="thumb" type="button" aria-pressed="true" data-shot data-full="assets/img/anamon-slot.webp" data-small="assets/img/anamon-slot-800.webp" data-what="Slot mini-game" data-cap="Anamon · Slot mini-game" data-alt="Three phone screens of the Anamon Royale slot mini-game with sample data: the machine signed in with level, XP, a wallet address and 12 spins left; a three-of-a-kind result; and the leaderboard with the player's own rank pinned at the bottom"><img src="assets/img/anamon-slot-480.webp" width="1600" height="1000" loading="lazy" decoding="async" alt=""><span>Slot mini-game</span></button>
+            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/anamon-web-client.webp" data-small="assets/img/anamon-web-client-800.webp" data-what="Web client" data-cap="Anamon · Web client" data-alt="Anamon web client home page: the game logo over forest artwork, with navigation for marketplace, play, lore and FAQ, a side menu and a connect-wallet button"><img src="assets/img/anamon-web-client-480.webp" width="1440" height="812" loading="lazy" decoding="async" alt=""><span>Web client</span></button>
           </div>
         </div>
         <div class="entry-text">
@@ -564,7 +613,7 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
       <article class="entry" data-t="all backend games" aria-labelledby="helix-h">
         <div class="entry-figs">
           <button class="plate" type="button" data-shot data-full="assets/img/helix-land-maps.webp" data-cap="HELIX · Land parcel renders">
-            <img src="assets/img/helix-land-maps-800.webp" srcset="assets/img/helix-land-maps-800.webp 800w, assets/img/helix-land-maps.webp 1620w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1620" height="1080" loading="lazy" decoding="async" alt="Six HELIX land parcel images: dark 3D city maps of Manhattan blocks, each with a street address, an area, a tier in grey, cyan or green, the HELIX wordmark and a token number">
+            <img src="assets/img/helix-land-maps-800.webp" srcset="assets/img/helix-land-maps-480.webp 480w, assets/img/helix-land-maps-800.webp 800w, assets/img/helix-land-maps.webp 1620w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1620" height="1080" loading="lazy" decoding="async" alt="Six HELIX land parcel images: dark 3D city maps of Manhattan blocks, each with a street address, an area, a tier in grey, cyan or green, the HELIX wordmark and a token number">
             <span class="plate-cap"><span>HELIX</span><span class="cap-what">Land parcel renders</span></span>
           </button>
         </div>
@@ -587,12 +636,12 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
       <article class="entry" data-t="all rust backend" aria-labelledby="forge-h">
         <div class="entry-figs">
           <button class="plate" type="button" data-main data-full="assets/img/forge-board.webp" data-cap="Forge · Task board">
-            <img src="assets/img/forge-board-800.webp" srcset="assets/img/forge-board-800.webp 800w, assets/img/forge-board.webp 1600w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1600" height="1000" loading="lazy" decoding="async" alt="Forge web UI showing a board of coding-agent tasks moving through backlog, todo, in progress, review and done">
+            <img src="assets/img/forge-board-800.webp" srcset="assets/img/forge-board-480.webp 480w, assets/img/forge-board-800.webp 800w, assets/img/forge-board.webp 1600w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1600" height="1000" loading="lazy" decoding="async" alt="Forge web UI showing a board of coding-agent tasks moving through backlog, todo, in progress, review and done">
             <span class="plate-cap"><span>Forge</span><span class="cap-what">Task board</span></span>
           </button>
           <div class="strip" role="group" aria-label="Forge screenshots">
-            <button class="thumb" type="button" aria-pressed="true" data-shot data-full="assets/img/forge-board.webp" data-small="assets/img/forge-board-800.webp" data-what="Task board" data-cap="Forge · Task board" data-alt="Forge web UI showing a board of coding-agent tasks moving through backlog, todo, in progress, review and done"><img src="assets/img/forge-board-800.webp" width="1600" height="1000" loading="lazy" decoding="async" alt=""><span>Task board</span></button>
-            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/forge-task.webp" data-small="assets/img/forge-task-800.webp" data-what="Task detail" data-cap="Forge · Task detail" data-alt="Forge task detail page with execution actions, token and cost counters, status, assignees and retry limits"><img src="assets/img/forge-task-800.webp" width="1600" height="1000" loading="lazy" decoding="async" alt=""><span>Task detail</span></button>
+            <button class="thumb" type="button" aria-pressed="true" data-shot data-full="assets/img/forge-board.webp" data-small="assets/img/forge-board-800.webp" data-what="Task board" data-cap="Forge · Task board" data-alt="Forge web UI showing a board of coding-agent tasks moving through backlog, todo, in progress, review and done"><img src="assets/img/forge-board-480.webp" width="1600" height="1000" loading="lazy" decoding="async" alt=""><span>Task board</span></button>
+            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/forge-task.webp" data-small="assets/img/forge-task-800.webp" data-what="Task detail" data-cap="Forge · Task detail" data-alt="Forge task detail page with execution actions, token and cost counters, status, assignees and retry limits"><img src="assets/img/forge-task-480.webp" width="1600" height="1000" loading="lazy" decoding="async" alt=""><span>Task detail</span></button>
           </div>
         </div>
         <div class="entry-text">
@@ -614,12 +663,12 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
       <article class="entry" data-t="all rust backend" aria-labelledby="smith-h">
         <div class="entry-figs">
           <button class="plate" type="button" data-main data-full="assets/img/smith-approval.webp" data-cap="Smith · Shell approval">
-            <img src="assets/img/smith-approval.webp" width="1032" height="752" loading="lazy" decoding="async" alt="Smith terminal session asking for approval before running a host shell command, listing the access it grants">
+            <img src="assets/img/smith-approval.webp" srcset="assets/img/smith-approval-480.webp 480w, assets/img/smith-approval.webp 1032w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1032" height="752" loading="lazy" decoding="async" alt="Smith terminal session asking for approval before running a host shell command, listing the access it grants">
             <span class="plate-cap"><span>Smith</span><span class="cap-what">Shell approval</span></span>
           </button>
           <div class="strip" role="group" aria-label="Smith screenshots">
-            <button class="thumb" type="button" aria-pressed="true" data-shot data-full="assets/img/smith-approval.webp" data-small="assets/img/smith-approval.webp" data-what="Shell approval" data-cap="Smith · Shell approval" data-alt="Smith terminal session asking for approval before running a host shell command, listing the access it grants"><img src="assets/img/smith-approval.webp" width="1032" height="752" loading="lazy" decoding="async" alt=""><span>Shell approval</span></button>
-            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/smith-commands.webp" data-small="assets/img/smith-commands.webp" data-what="Command palette" data-cap="Smith · Command palette" data-alt="Smith terminal command palette listing commands for status, context, sessions, models, agents, MCP servers, review and undo"><img src="assets/img/smith-commands.webp" width="1032" height="752" loading="lazy" decoding="async" alt=""><span>Command palette</span></button>
+            <button class="thumb" type="button" aria-pressed="true" data-shot data-full="assets/img/smith-approval.webp" data-small="assets/img/smith-approval.webp" data-what="Shell approval" data-cap="Smith · Shell approval" data-alt="Smith terminal session asking for approval before running a host shell command, listing the access it grants"><img src="assets/img/smith-approval-480.webp" width="1032" height="752" loading="lazy" decoding="async" alt=""><span>Shell approval</span></button>
+            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/smith-commands.webp" data-small="assets/img/smith-commands.webp" data-what="Command palette" data-cap="Smith · Command palette" data-alt="Smith terminal command palette listing commands for status, context, sessions, models, agents, MCP servers, review and undo"><img src="assets/img/smith-commands-480.webp" width="1032" height="752" loading="lazy" decoding="async" alt=""><span>Command palette</span></button>
           </div>
         </div>
         <div class="entry-text">
@@ -644,13 +693,13 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
       <article class="entry" data-t="all games" aria-labelledby="zerkov-h">
         <div class="entry-figs">
           <button class="plate" type="button" data-main data-full="assets/img/zerkov-raid.webp" data-cap="Zerkov · Raid HUD">
-            <img src="assets/img/zerkov-raid-800.webp" srcset="assets/img/zerkov-raid-800.webp 800w, assets/img/zerkov-raid.webp 1600w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1600" height="900" loading="lazy" decoding="async" alt="Zerkov raid: a top-down pixel-art forest compound with a raid timer, extraction marker, health bar and ammunition counter">
+            <img src="assets/img/zerkov-raid-800.webp" srcset="assets/img/zerkov-raid-480.webp 480w, assets/img/zerkov-raid-800.webp 800w, assets/img/zerkov-raid.webp 1600w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1600" height="900" loading="lazy" decoding="async" alt="Zerkov raid: a top-down pixel-art forest compound with a raid timer, extraction marker, health bar and ammunition counter">
             <span class="plate-cap"><span>Zerkov</span><span class="cap-what">Raid HUD</span></span>
           </button>
           <div class="strip" role="group" aria-label="Zerkov screenshots">
-            <button class="thumb" type="button" aria-pressed="true" data-shot data-full="assets/img/zerkov-raid.webp" data-small="assets/img/zerkov-raid-800.webp" data-what="Raid HUD" data-cap="Zerkov · Raid HUD" data-alt="Zerkov raid: a top-down pixel-art forest compound with a raid timer, extraction marker, health bar and ammunition counter"><img src="assets/img/zerkov-raid-800.webp" width="1600" height="900" loading="lazy" decoding="async" alt=""><span>Raid HUD</span></button>
-            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/zerkov-inventory.webp" data-small="assets/img/zerkov-inventory-800.webp" data-what="Loadout and stash" data-cap="Zerkov · Loadout and stash" data-alt="Zerkov inventory screen with equipment slots, a grid loadout with vest and field pack, and a searchable stash"><img src="assets/img/zerkov-inventory-800.webp" width="1600" height="900" loading="lazy" decoding="async" alt=""><span>Loadout and stash</span></button>
-            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/zerkov-bunker.webp" data-small="assets/img/zerkov-bunker-800.webp" data-what="Bunker stations" data-cap="Zerkov · Bunker stations" data-alt="Zerkov bunker screen with a station map and an upgrade panel listing required materials for the ammunition bench"><img src="assets/img/zerkov-bunker-800.webp" width="1600" height="900" loading="lazy" decoding="async" alt=""><span>Bunker stations</span></button>
+            <button class="thumb" type="button" aria-pressed="true" data-shot data-full="assets/img/zerkov-raid.webp" data-small="assets/img/zerkov-raid-800.webp" data-what="Raid HUD" data-cap="Zerkov · Raid HUD" data-alt="Zerkov raid: a top-down pixel-art forest compound with a raid timer, extraction marker, health bar and ammunition counter"><img src="assets/img/zerkov-raid-480.webp" width="1600" height="900" loading="lazy" decoding="async" alt=""><span>Raid HUD</span></button>
+            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/zerkov-inventory.webp" data-small="assets/img/zerkov-inventory-800.webp" data-what="Loadout and stash" data-cap="Zerkov · Loadout and stash" data-alt="Zerkov inventory screen with equipment slots, a grid loadout with vest and field pack, and a searchable stash"><img src="assets/img/zerkov-inventory-480.webp" width="1600" height="900" loading="lazy" decoding="async" alt=""><span>Loadout and stash</span></button>
+            <button class="thumb" type="button" aria-pressed="false" data-shot data-full="assets/img/zerkov-bunker.webp" data-small="assets/img/zerkov-bunker-800.webp" data-what="Bunker stations" data-cap="Zerkov · Bunker stations" data-alt="Zerkov bunker screen with a station map and an upgrade panel listing required materials for the ammunition bench"><img src="assets/img/zerkov-bunker-480.webp" width="1600" height="900" loading="lazy" decoding="async" alt=""><span>Bunker stations</span></button>
           </div>
         </div>
         <div class="entry-text">
@@ -672,7 +721,7 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
       <article class="entry" data-t="all rust" aria-labelledby="novelkit-h">
         <div class="entry-figs">
           <button class="plate" type="button" data-shot data-full="assets/img/novelkit-writing.webp" data-cap="NovelKit · Manuscript with entity card">
-            <img src="assets/img/novelkit-writing-800.webp" srcset="assets/img/novelkit-writing-800.webp 800w, assets/img/novelkit-writing.webp 1600w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1600" height="900" loading="lazy" decoding="async" alt="NovelKit writing view: a chapter outline on the left, a Chinese manuscript in the centre, and a hover card showing a character's summary and appearances">
+            <img src="assets/img/novelkit-writing-800.webp" srcset="assets/img/novelkit-writing-480.webp 480w, assets/img/novelkit-writing-800.webp 800w, assets/img/novelkit-writing.webp 1600w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1600" height="900" loading="lazy" decoding="async" alt="NovelKit writing view: a chapter outline on the left, a Chinese manuscript in the centre, and a hover card showing a character's summary and appearances">
             <span class="plate-cap"><span>NovelKit</span><span class="cap-what">Manuscript with entity card</span></span>
           </button>
         </div>
@@ -857,6 +906,7 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
       <a class="btn" href="https://github.com/mai1015" target="_blank" rel="noopener">github.com/mai1015</a>
       <a class="btn" href="https://www.linkedin.com/in/zhili-mai-361066136/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="/">mai1015.com</a>
+        <a class="btn" href="/resume/zhili-mai-resume.pdf" download>PDF</a>
     </div>
     <p class="data">Toronto, Canada. Open to remote roles in backend and full stack, Rust and developer tools, and game client work.</p>
   </div>

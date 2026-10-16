@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Spilt traffic using route table in mac
+title: Split traffic using the route table on macOS
 category: Linux
 tags: [Linux, MacOS, route]
 comments: true

@@ -34,20 +34,35 @@ layout: default
 
   {%- if page.comments %}
   <section class="comments" aria-label="Comments">
-    <div id="disqus_thread"></div>
+    <h2 class="comments-h">Comments</h2>
+    <div class="giscus"></div>
     <script>
-      var disqus_config = function () {
-        this.page.url = "{{ page.url | absolute_url }}";
-        this.page.identifier = "{{ page.url }}";
-      };
       (function () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://mai1015.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
+        var root = document.documentElement;
+        var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        var s = document.createElement('script');
+        s.src = 'https://giscus.app/client.js';
+        s.async = true;
+        s.crossOrigin = 'anonymous';
+        var attrs = {
+          'data-repo': 'mai1015/mai1015.github.io',
+          'data-repo-id': 'MDEwOlJlcG9zaXRvcnk4NjE3NzYwNw==',
+          'data-category': 'Announcements',
+          'data-category-id': 'DIC_kwDOBSL3R84DIk5t',
+          'data-mapping': 'pathname',
+          'data-strict': '1',
+          'data-reactions-enabled': '1',
+          'data-emit-metadata': '0',
+          'data-input-position': 'top',
+          'data-lang': 'en',
+          'data-loading': 'lazy',
+          'data-theme': dark ? 'dark' : 'light'
+        };
+        for (var k in attrs) s.setAttribute(k, attrs[k]);
+        document.querySelector('.comments').appendChild(s);
       })();
     </script>
-    <noscript>Enable JavaScript to see comments from Disqus.</noscript>
+    <noscript>Comments use giscus and need JavaScript. You can also reply on <a href="https://github.com/mai1015/mai1015.github.io/discussions">GitHub Discussions</a>.</noscript>
   </section>
   {%- endif %}
 </article>

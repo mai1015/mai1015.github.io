@@ -281,6 +281,7 @@ main { flex: 1 0 auto; width: 100%; max-width: var(--col); }
 .pager-next { text-align: right; }
 .pager-title { font-weight: 500; line-height: 1.4; }
 .comments { margin-top: var(--s-5); min-width: 0; max-width: var(--measure); }
+.comments-h { margin: 0 0 var(--s-3); padding-top: var(--s-5); border-top: 1px solid var(--rule-strong); font: 700 1.375rem/1.2 var(--f-display); font-variation-settings: "wdth" 88; }
 
 /* Topics page */
 .topic-index { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); }

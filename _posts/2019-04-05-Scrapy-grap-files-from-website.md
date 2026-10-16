@@ -1,9 +1,11 @@
 ---
 layout: post
-title: Scrapy grap files from website
-category: Notes
+title: Scrapy grab files from a website
+category: Note
 tags: [Crawler, Scrapy]
 comments: true
+redirect_from:
+  - /notes/2019/04/05/Scrapy-grap-files-from-website/
 ---
 I am trying to download some material from my course website. However, there are a lot of files in the server. I do not want to download file one by one. So, I try to write a script that can help me download all the files at once.
 

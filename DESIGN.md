@@ -115,6 +115,16 @@ Checked against the anti-slop rulebook (github.com/miqdadbadjuber/anti-slop). Th
 - Bolded lists of three, bold-label list items ("- **Label.** text"), recap sections at the end of posts, and em dashes.
 - Controls under 44px on touch screens (`@media (pointer: coarse)`).
 
+## Delivery
+
+- Fonts are self-hosted on mai1015.com (`/assets/fonts`, `/assets/css/fonts.css`): Archivo trimmed to widths 70–88% and weights 700–800, IBM Plex Sans 400–600 plus italic 400, IBM Plex Mono 400 and 500, Latin and Latin Extended only. Archivo and Plex Sans 400 are preloaded. The resume source keeps Google Fonts so it renders standalone; `publish-to-blog.py` swaps them for the self-hosted files.
+- Screenshots ship at three widths: `-480.webp` (thumbnails, phone cascade), `-800.webp` and full size, with `sizes` taken from the real rendered widths.
+- Print: the resume prints as a text resume on Letter paper, three pages, with no screenshots, controls or view switch, and a print-only contact line under the name. `publish-to-blog.py --pdf` prints it to `/resume/zhili-mai-resume.pdf`.
+- Share images are 1200×630 PNGs in `/assets/og/`: a designed card for the blog, and a screenshot of the resume's first screen for `/resume/`.
+- Comments use giscus (GitHub Discussions on the blog repo, Announcements category, `pathname` mapping), loaded lazily and themed to match the page. Disqus is gone, along with its tracking cookies.
+- Changing a post's category changes its URL. Add the old path under `redirect_from:` (jekyll-redirect-from) whenever a category is renamed or merged.
+- `jekyll-sitemap` writes `sitemap.xml` and `robots.txt`.
+
 ## Content rules
 
 - Employer material is limited to what the owner asked for: the Anamon slot mini-game and web client, the HELIX land renders, and the Leagues contract suite. Label them "Full-time work". Do not present studio artwork or marketing pages as authored work.
@@ -157,7 +167,7 @@ The blog is two-sided: a fixed identity panel on the left so the author is alway
 - Cross-document view transitions (`@view-transition { navigation: auto; }`); the panel has `view-transition-name: side` so it holds still while the column cross-fades in 180ms. A speculation-rules script prerenders same-site links on hover (excluding `/resume/`, `/projects/amazon/` and the feed), so swaps are close to instant in Chromium and Safari and plain page loads elsewhere. All of it is off under `prefers-reduced-motion`.
 
 ### Content rules (blog)
-- Post URLs, categories and Disqus identifiers stay as they were; do not rename categories (they are part of the permalink).
+- Post URLs stay as they were. Categories are part of the permalink, so a rename needs a `redirect_from:` entry.
 - MathJax 3 loads only on posts with `math: true` or a `Math` tag.
 - The stylesheet link carries `?v=<build time>`. Cloudflare sits in front of GitHub Pages and tells browsers to cache CSS for 4 hours, so an unversioned URL pairs new HTML with old CSS after a deploy. Version any other shared asset the same way if it changes.
 - The resume is published by running `profile-site/publish-to-blog.py` against this repo; do not edit `resume/` by hand.

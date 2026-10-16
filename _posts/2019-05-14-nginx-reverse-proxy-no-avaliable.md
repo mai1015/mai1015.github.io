@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Nginx reverse proxy solve no avaliable 
+title: "Nginx reverse proxy: no live upstreams"
 category: Nginx
 tags: [Linux, Nginx, http, proxy]
 comments: true

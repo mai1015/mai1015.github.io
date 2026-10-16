@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Arduino Intergrated Circuit Communication Note
+title: Arduino Inter-Integrated Circuit Communication Note
 category: Arduino
 published: trye
 tags: [Arduino,Hardware,MPU6050,Note]

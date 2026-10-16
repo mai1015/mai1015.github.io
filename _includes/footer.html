@@ -10,6 +10,8 @@
       var next = dark ? 'light' : 'dark';
       root.dataset.theme = next;
       try { localStorage.setItem('theme', next); } catch (e) {}
+      var frame = document.querySelector('iframe.giscus-frame');
+      if (frame) frame.contentWindow.postMessage({ giscus: { setConfig: { theme: next } } }, 'https://giscus.app');
     });
   })();
 </script>

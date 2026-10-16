@@ -26,6 +26,8 @@ links:
 plugins:
   - jekyll-gist
   - jekyll-github-metadata
+  - jekyll-redirect-from
+  - jekyll-sitemap
 
 markdown: kramdown
 kramdown:

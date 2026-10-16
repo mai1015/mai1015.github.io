@@ -11,7 +11,7 @@ I am using `jhipster` to generate spring boot project. It compile but it does no
 It works well on Java 8, so I have to install one more version. However, I cannot install via PPA. It is because webupd8 has [DISCONTINUED](https://launchpad.net/~webupd8team/+archive/ubuntu/java) since we need to login to download. So, I have to download java manually. I can use `update-alternatives` to switch version.
 
 ## Install
-1. Download 1.8 jdk from [Oracle](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Register an account and then download. It is better to download `jdk-8u211-linux-x64.tar.gz`.
+1. Download 1.8 jdk from [Oracle](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html). Register an account and then download. It is better to download `jdk-8u211-linux-x64.tar.gz`.
 2. `scp` upload the file to server.
 3. unzip the file at server with `tar xzvf filename`.
 4. Move the folder into `/usr/lib/jvm/` (The location my java 11 was installed).
