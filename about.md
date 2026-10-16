@@ -6,7 +6,7 @@ lead: Software engineer in Toronto, working on backend services, Rust developer 
 
 I'm mai1015. I build backend services, developer tools and game systems.
 
-At work that means game backends and smart contracts for a game studio. On my own time I build [Forge](https://github.com/ForgeAILab/forge), a local-first workflow engine for coding agents, and [Smith](https://github.com/ForgeAILab/smith), a terminal coding agent on the same Rust runtime. Before that I worked on the Unreal client and creator tools at Helix, and on backend microservices at Dataraction. I studied computer science at York University.
+As a self-employed contractor, that means game backends and smart contracts for a game studio. On my own time I build [Forge](https://github.com/ForgeAILab/forge), a local-first workflow engine for coding agents, and [Smith](https://github.com/ForgeAILab/smith), a terminal coding agent on the same Rust runtime. Before that I worked on the Unreal client and creator tools at Helix, and on backend microservices at Dataraction. I studied computer science at York University.
 
 This blog started as a notebook while I was a student. Most posts are fixes I wanted to be able to find again, on Kubernetes, Linux, Java and web front ends. My [resume](/resume/) has the fuller picture, and [Projects](/projects/) lists what I build in the open.
 
