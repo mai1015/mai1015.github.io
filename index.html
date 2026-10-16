@@ -2,39 +2,64 @@
 layout: default
 title: Writing
 ---
-<section class="intro">
-  <p class="label status">Toronto, Canada</p>
-  <h1 class="display">Engineering notes.</h1>
-  <p class="lead">I'm mai1015, a software engineer working on backend services, Rust developer tools and games. This is where I write down fixes and things I learn along the way.</p>
-  <p class="actions">
-    <a class="btn btn--primary" href="{{ site.links.resume | relative_url }}">Resume</a>
-    <a class="btn" href="{{ '/projects/' | relative_url }}">Projects</a>
-    <a class="btn" href="{{ site.links.github }}">GitHub</a>
-  </p>
-</section>
-
 {%- assign posts = site.posts | where_exp: "p", "p.hidden != true" %}
-{%- assign cats = site.categories | sort %}
-<section class="writing" aria-labelledby="writing-h">
-  <div class="sec-head">
-    <h2 id="writing-h">Writing</h2>
-    <p class="data">{{ posts.size }} posts · <a href="{{ '/categories/' | relative_url }}">by topic</a> · <a href="{{ '/atom.xml' | relative_url }}">RSS</a></p>
-  </div>
+{%- assign newest = posts.first.date | date: '%Y' %}
+{%- assign oldest = posts.last.date | date: '%Y' %}
+{%- assign keys = "" | split: "" %}
+{%- for c in site.categories %}
+  {%- capture k %}{{ c[1].size | plus: 1000 }}|{{ c[0] }}{% endcapture %}
+  {%- assign keys = keys | push: k %}
+{%- endfor %}
+{%- assign keys = keys | sort | reverse %}
 
+<header class="home-head">
+  <h1 class="h-page">Writing</h1>
+  <p class="data">{{ posts.size }} notes, {{ oldest }}–{{ newest }}. Fixes and things I wanted to find again.</p>
+</header>
+
+<div class="topics" role="group" aria-label="Filter by topic">
+  <button type="button" data-cat="" aria-pressed="true">All<sup>{{ posts.size }}</sup></button>
+  {%- for k in keys limit: 7 %}
+  {%- assign parts = k | split: "|" %}
+  <button type="button" data-cat="{{ parts[1] | slugify }}" aria-pressed="false">{{ parts[1] }}<sup>{{ parts[0] | minus: 1000 }}</sup></button>
+  {%- endfor %}
+  <a href="{{ '/categories/' | relative_url }}">Every topic</a>
+</div>
+
+<div class="log-wrap">
   {%- assign years = posts | group_by_exp: "p", "p.date | date: '%Y'" %}
   {%- for year in years %}
-  <div class="year">
-    <h3 class="label year-label">{{ year.name }}</h3>
-    <ul class="post-list">
+  <section class="year" aria-label="{{ year.name }}">
+    <h2 class="year-num" aria-hidden="true">{{ year.name }}</h2>
+    <ol class="log">
       {%- for post in year.items %}
-      <li>
-        <a class="post-row" href="{{ post.url | relative_url }}">
-          <span class="post-row-title">{{ post.title }}</span>
-          <span class="data post-row-meta"><span>{{ post.category | default: 'Note' }}</span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %-d' }}</time></span>
+      <li data-cat="{{ post.category | slugify }}">
+        <a class="log-row" href="{{ post.url | relative_url }}">
+          <time class="log-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %d' }}</time>
+          <span class="log-title">{{ post.title }}</span>
+          <span class="log-cat">{{ post.category | default: 'Note' }}</span>
         </a>
       </li>
       {%- endfor %}
-    </ul>
-  </div>
+    </ol>
+  </section>
   {%- endfor %}
-</section>
+  <p class="log-empty data" hidden>No posts in this topic.</p>
+</div>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.topics button');
+    var rows = document.querySelectorAll('.log li');
+    var years = document.querySelectorAll('.year');
+    var empty = document.querySelector('.log-empty');
+    function pick(cat) {
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cat === cat)); });
+      rows.forEach(function (r) { r.hidden = !!cat && r.dataset.cat !== cat; });
+      var any = false;
+      years.forEach(function (y) { var show = !!y.querySelector('li:not([hidden])'); y.hidden = !show; any = any || show; });
+      empty.hidden = any;
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { pick(b.dataset.cat); }); });
+  })();
+</script>

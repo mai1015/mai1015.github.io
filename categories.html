@@ -11,15 +11,15 @@ lead: Every post, grouped by the topic it was filed under.
 {%- for c in cats %}
 <section class="topic" id="{{ c[0] | slugify }}">
   <h2>{{ c[0] }}</h2>
-  <ul class="post-list">
+  <ol class="log">
     {%- for post in c[1] %}
     <li>
-      <a class="post-row" href="{{ post.url | relative_url }}">
-        <span class="post-row-title">{{ post.title }}</span>
-        <span class="data post-row-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %-d, %Y' }}</time></span>
+      <a class="log-row" href="{{ post.url | relative_url }}">
+        <time class="log-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %Y' }}</time>
+        <span class="log-title">{{ post.title }}</span>
       </a>
     </li>
     {%- endfor %}
-  </ul>
+  </ol>
 </section>
 {%- endfor %}

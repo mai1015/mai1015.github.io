@@ -5,18 +5,15 @@ layout: default
   <header class="post-head">
     <p class="label"><a href="{{ '/categories/' | relative_url }}#{{ page.category | slugify }}">{{ page.category | default: 'Note' }}</a></p>
     <h1 class="title">{{ page.title }}</h1>
-  </header>
-
-  <aside class="post-aside">
     {%- assign words = content | strip_html | number_of_words %}
-    <dl class="facts">
-      <div><dt class="label">Published</dt><dd class="data"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %-d, %Y' }}</time></dd></div>
-      <div><dt class="label">Reading</dt><dd class="data">{{ words | divided_by: 220 | plus: 1 }} min</dd></div>
-      {%- if page.tags.size > 0 %}
-      <div><dt class="label">Tags</dt><dd><ul class="tags">{% for tag in page.tags %}<li>{{ tag }}</li>{% endfor %}</ul></dd></div>
-      {%- endif %}
-    </dl>
-  </aside>
+    <p class="post-meta data">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %-d, %Y' }}</time>
+      <span>{{ words | divided_by: 220 | plus: 1 }} min read</span>
+    </p>
+    {%- if page.tags.size > 0 %}
+    <ul class="tags" aria-label="Tags">{% for tag in page.tags %}<li>{{ tag }}</li>{% endfor %}</ul>
+    {%- endif %}
+  </header>
 
   <div class="prose">
     {{ content }}

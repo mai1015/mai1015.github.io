@@ -2,10 +2,18 @@
 <html lang="{{ page.lang | default: 'en' }}">
 {% include head.html %}
 <body class="layout-{{ page.layout | default: 'home' }}">
-{% include header.html %}
-<main id="main" class="wrap">
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+{% include sidebar.html %}
+<div class="col">
+  <nav class="mnav" aria-label="Site (compact)">
+    {% include nav.html %}
+  </nav>
+  <main id="main">
 {{ content }}
-</main>
+  </main>
 {% include footer.html %}
+</div>
+</div>
 </body>
 </html>

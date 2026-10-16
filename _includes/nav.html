@@ -1,0 +1,5 @@
+{%- assign here = page.url -%}
+<a href="{{ '/' | relative_url }}"{% if here == "/" or page.layout == "post" %} aria-current="page"{% endif %}><span class="idx">01</span>Writing</a>
+<a href="{{ '/projects/' | relative_url }}"{% if here == "/projects/" %} aria-current="page"{% endif %}><span class="idx">02</span>Projects</a>
+<a href="{{ '/about/' | relative_url }}"{% if here == "/about/" %} aria-current="page"{% endif %}><span class="idx">03</span>About</a>
+<a href="{{ site.links.resume | relative_url }}"><span class="idx">04</span>Resume</a>
