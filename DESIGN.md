@@ -147,4 +147,5 @@ The blog is two-sided: a fixed identity panel on the left so the author is alway
 ### Content rules (blog)
 - Post URLs, categories and Disqus identifiers stay as they were; do not rename categories (they are part of the permalink).
 - MathJax 3 loads only on posts with `math: true` or a `Math` tag.
+- The stylesheet link carries `?v=<build time>`. Cloudflare sits in front of GitHub Pages and tells browsers to cache CSS for 4 hours, so an unversioned URL pairs new HTML with old CSS after a deploy. Version any other shared asset the same way if it changes.
 - The resume is published by running `profile-site/publish-to-blog.py` against this repo; do not edit `resume/` by hand.
