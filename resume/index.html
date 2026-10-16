@@ -29,7 +29,7 @@ try {
 :root {
   --ground: #ECEEF1; --surface: #F7F8FA; --sunk: #E2E5EA;
   --ink: #14181F; --ink-2: #444C5A; --ink-3: #626B7B;
-  --rule: #D3D7DE; --rule-strong: #AEB5C0; --grid: #DCE0E6;
+  --rule: #D3D7DE; --rule-strong: #AEB5C0;
   --signal-tint: #FBE7DB; --signal-soft: #F2B28E; --signal: #E8590C;
   --signal-ink: #AD3A08; --signal-fill: #C8410B; --on-signal: #FFFFFF;
   --shadow: 20 24 31; --scrim: 10 12 16; --ground-rgb: 236 238 241;
@@ -50,7 +50,7 @@ try {
   :root:not([data-theme="light"]) {
     --ground: #0F1216; --surface: #161A20; --sunk: #1D222A;
     --ink: #E8EBF0; --ink-2: #AAB2BF; --ink-3: #838C9C;
-    --rule: #2A303A; --rule-strong: #414957; --grid: #1A1F26;
+    --rule: #2A303A; --rule-strong: #414957;
     --signal-tint: #3A2015; --signal-soft: #8A4420; --signal: #FF7A33;
     --signal-ink: #FF9A62; --signal-fill: #F2702B; --on-signal: #14181F;
     --shadow: 0 0 0; --ground-rgb: 15 18 22;
@@ -60,7 +60,7 @@ try {
 :root[data-theme="dark"] {
   --ground: #0F1216; --surface: #161A20; --sunk: #1D222A;
   --ink: #E8EBF0; --ink-2: #AAB2BF; --ink-3: #838C9C;
-  --rule: #2A303A; --rule-strong: #414957; --grid: #1A1F26;
+  --rule: #2A303A; --rule-strong: #414957;
   --signal-tint: #3A2015; --signal-soft: #8A4420; --signal: #FF7A33;
   --signal-ink: #FF9A62; --signal-fill: #F2702B; --on-signal: #14181F;
   --shadow: 0 0 0; --ground-rgb: 15 18 22;
@@ -86,7 +86,7 @@ svg { display: block; flex: none; }
 
 .wrap { max-width: var(--page); margin-inline: auto; padding-inline: var(--gutter); }
 .label {
-  font: 500 .75rem/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3);
+  font: 500 .875rem/1.4 var(--f-body); color: var(--ink-3);
 }
 .data { font: 400 .8125rem/1.5 var(--f-mono); color: var(--ink-2); }
 .skip {
@@ -107,7 +107,7 @@ svg { display: block; flex: none; }
 .top .icon-btn { order: 2; }
 @media (min-width: 720px) { .nav { order: 2; flex-basis: auto; margin-left: auto; } .top .icon-btn { order: 3; } }
 .nav a {
-  font: 500 .8125rem/1 var(--f-mono); color: var(--ink-2); text-decoration: none; padding-block: var(--s-2);
+  font: 500 .9375rem/1 var(--f-body); color: var(--ink-2); text-decoration: none; padding-block: var(--s-2);
 }
 .nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 2px; }
 .icon-btn {
@@ -127,13 +127,6 @@ svg { display: block; flex: none; }
 
 /* Hero */
 .hero-band { position: relative; overflow: clip; }
-.hero-band::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 40px 40px; background-position: center top;
-  -webkit-mask-image: radial-gradient(120% 90% at 78% 8%, #000 0%, transparent 72%);
-  mask-image: radial-gradient(120% 90% at 78% 8%, #000 0%, transparent 72%);
-}
 .hero {
   position: relative; z-index: 1; display: grid; gap: var(--s-7);
   padding-block: var(--s-6) var(--s-8); align-items: center;
@@ -148,7 +141,7 @@ svg { display: block; flex: none; }
 .actions { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-3); align-items: center; }
 .btn {
   display: inline-flex; align-items: center; gap: var(--s-2); min-height: 42px; padding: 0 var(--s-4);
-  font: 500 .875rem/1 var(--f-mono); color: var(--ink); text-decoration: none; cursor: pointer;
+  font: 500 .875rem/1 var(--f-body); color: var(--ink); text-decoration: none; cursor: pointer;
   background: transparent; border: 1px solid var(--rule-strong); border-radius: var(--r-1);
   transition: background-color .15s var(--ease), border-color .15s var(--ease), transform .12s var(--ease);
 }
@@ -163,7 +156,7 @@ svg { display: block; flex: none; }
 .mail a:hover { text-decoration: underline; text-decoration-color: var(--signal); }
 .mail button {
   display: inline-flex; align-items: center; gap: var(--s-2); min-height: 42px; padding: 0 var(--s-4);
-  font: 500 .875rem/1 var(--f-mono); cursor: pointer; border: 0; border-radius: 0;
+  font: 500 .875rem/1 var(--f-body); cursor: pointer; border: 0; border-radius: 0;
   background: var(--signal-fill); color: var(--on-signal);
   transition: filter .15s var(--ease), transform .12s var(--ease);
 }
@@ -184,9 +177,8 @@ svg { display: block; flex: none; }
 .plate-cap {
   display: flex; align-items: center; gap: var(--s-2); padding: 7px var(--s-3);
   background: var(--sunk); border-top: 1px solid var(--rule);
-  font: 500 .6875rem/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2);
+  font: 500 .75rem/1.3 var(--f-mono); color: var(--ink-2);
 }
-.plate-cap::before { content: ""; width: 6px; height: 6px; background: var(--signal); flex: none; }
 .cap-what { color: var(--ink-3); }
 .cap-what::before { content: "/ "; }
 
@@ -203,6 +195,8 @@ svg { display: block; flex: none; }
   .spec div { grid-template-columns: 12.5rem minmax(0, 1fr); column-gap: var(--s-4); align-items: baseline; }
 }
 
+.entry .plate { box-shadow: none; }
+.entry .plate:hover { transform: none; box-shadow: none; border-color: var(--ink-3); }
 .cascade { position: relative; aspect-ratio: 1 / .92; width: 100%; max-width: 560px; margin-inline: auto; }
 .cascade .plate { position: absolute; }
 .cascade .c-back { top: 0; right: 0; width: 70%; }
@@ -224,7 +218,7 @@ svg { display: block; flex: none; }
 .switch { display: flex; border: 1px solid var(--rule-strong); border-radius: var(--r-1); overflow: hidden; background: var(--sunk); }
 .switch button {
   position: relative; min-height: 34px; padding: 0 var(--s-3); cursor: pointer; white-space: nowrap;
-  font: 500 .75rem/1 var(--f-mono); color: var(--ink-2); background: transparent;
+  font: 500 .875rem/1 var(--f-body); color: var(--ink-2); background: transparent;
   border: 0; border-left: 1px solid var(--rule-strong); border-radius: 0;
   transition: background-color .15s var(--ease), color .15s var(--ease);
 }
@@ -356,7 +350,7 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
 .viewer-fig { display: grid; grid-template-rows: minmax(0, 1fr) auto; max-height: 94vh; }
 .viewer-fig img { width: 100%; max-height: calc(94vh - 56px); object-fit: contain; background: var(--sunk); }
 .viewer-bar { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-3); border-top: 1px solid var(--rule); min-height: 52px; }
-.viewer-bar .cap { flex: 1; min-width: 0; font: 500 .75rem/1.4 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.viewer-bar .cap { flex: 1; min-width: 0; font: 500 .75rem/1.4 var(--f-mono); color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .viewer-bar .count { font: 400 .75rem/1 var(--f-mono); color: var(--ink-3); font-variant-numeric: tabular-nums; }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -368,6 +362,13 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
   @keyframes recut { from { opacity: .35; translate: 0 6px; } to { opacity: 1; translate: 0 0; } }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+/* Touch: controls are at least 44px tall on coarse pointers. Kept last so it wins over component rules. */
+@media (pointer: coarse) {
+  .nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; }
+  .icon-btn { width: 44px; height: 44px; }
+  .switch button, .btn, .mail a, .mail button { min-height: 44px; }
+}
 </style>
 <!-- shared:end -->
 </head>
@@ -395,10 +396,10 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
     <div class="hero-copy">
       <p class="label">Software engineer</p>
       <h1 id="name">Zhili Mai</h1>
-      <p class="lead" data-t="all">I build <strong>backend services</strong>, <strong>Rust developer tools</strong> and <strong>game clients</strong>. I work in Go, TypeScript, Rust and C++, and connect APIs, data workflows and client code with the builds and releases that ship them.</p>
-      <p class="lead" data-t="backend" hidden>Software engineer with experience developing <strong>backend services, game platforms and web applications</strong>. I work across Go, TypeScript and Rust, connecting APIs, data workflows and client interfaces with deployment and operational needs.</p>
-      <p class="lead" data-t="rust" hidden>Software engineer with <strong>Rust creator-tool, SDK and service</strong> experience, plus native client integration and backend development. I build practical tooling around HTTP APIs, asset processing, persistent workflows and release automation.</p>
-      <p class="lead" data-t="games" hidden>Game and software developer with <strong>Unreal/C++ client, creator-tool and native framework</strong> experience at Helix. I combine engine integration with Rust and React asset workflows, build and release tooling, and backend services.</p>
+      <p class="lead" data-t="all">I build backend services, Rust developer tools and game clients. I work in Go, TypeScript, Rust and C++, and connect APIs, data workflows and client code with the builds and releases that ship them.</p>
+      <p class="lead" data-t="backend" hidden>Software engineer with experience developing backend services, game platforms and web applications. I work across Go, TypeScript and Rust, connecting APIs, data workflows and client interfaces with deployment and operational needs.</p>
+      <p class="lead" data-t="rust" hidden>Software engineer with Rust creator-tool, SDK and service experience, plus native client integration and backend development. I build practical tooling around HTTP APIs, asset processing, persistent workflows and release automation.</p>
+      <p class="lead" data-t="games" hidden>Game and software developer with Unreal/C++ client, creator-tool and native framework experience at Helix. I combine engine integration with Rust and React asset workflows, build and release tooling, and backend services.</p>
       <div class="actions">
         <span class="mail">
           <a href="mailto:i@mai1015.com">i@mai1015.com</a>

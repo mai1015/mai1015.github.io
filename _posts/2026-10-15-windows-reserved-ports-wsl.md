@@ -74,9 +74,3 @@ The Windows default starts at 49152. If yours starts at 1024, which some install
 netsh int ipv4 set dynamic tcp start=49152 num=16384
 netsh int ipv6 set dynamic tcp start=49152 num=16384
 ```
-
-## Summary
-
-- Run `netsh int ipv4 show excludedportrange protocol=tcp` first; it explains most "in use but not used" errors on Windows.
-- Stop `winnat`, add an exclusion for the ports you depend on, then start `winnat` again.
-- If the reservations keep landing on low ports, move the dynamic port range back to 49152.

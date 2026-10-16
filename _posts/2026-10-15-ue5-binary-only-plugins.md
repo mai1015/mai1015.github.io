@@ -53,9 +53,9 @@ public class MyPluginRuntime : ModuleRules
 
 Inside `Source/<Module>/`:
 
-- **Keep** the `Build.cs`. A plugin with no C++ users still needs it, because UBT discovers modules through these files.
-- **Keep** the public headers your users need to call your code from C++. If nobody will use the plugin from C++, you can delete all headers.
-- **Delete** every `.cpp` and every private header.
+- Keep the `Build.cs`. A plugin with no C++ users still needs it, because UBT discovers modules through these files.
+- Keep the public headers your users need to call your code from C++. If nobody will use the plugin from C++, you can delete all headers.
+- Delete every `.cpp` and every private header.
 
 This is where a clean `Public`/`Private` split pays off. If your public headers include private ones, you'll find out now.
 

@@ -23,7 +23,6 @@ Two signatures:
 | Ink 3 | `--ink-3` | `#626B7B` | `#838C9C` | Metadata, captions |
 | Rule | `--rule` | `#D3D7DE` | `#2A303A` | Dividers, frames |
 | Rule strong | `--rule-strong` | `#AEB5C0` | `#414957` | Section rules, control outlines |
-| Grid | `--grid` | `#DCE0E6` | `#1A1F26` | Hero drafting grid |
 | Signal tint | `--signal-tint` | `#FBE7DB` | `#3A2015` | Hover wash, active row |
 | Signal soft | `--signal-soft` | `#F2B28E` | `#8A4420` | Marker borders |
 | Signal | `--signal` | `#E8590C` | `#FF7A33` | Markers, active rail |
@@ -46,7 +45,7 @@ Rules: signal marks interaction or selection only. No colour outside this table.
 | Lead | IBM Plex Sans | `clamp(1.0625rem, 1.5vw, 1.25rem)` | 400 | 1.55 | 0 |
 | Body | IBM Plex Sans | `1rem` | 400 | 1.6 | 0 |
 | Small | IBM Plex Sans | `0.9375rem` | 400 | 1.55 | 0 |
-| Label | IBM Plex Mono | `0.75rem` | 500 | 1.4 | 0.06em, uppercase |
+| Label | IBM Plex Sans | `0.875rem` | 500 | 1.4 | 0, sentence case |
 | Data | IBM Plex Mono | `0.8125rem` | 400 | 1.5 | 0 |
 
 Stacks: `--f-display: "Archivo", "Arial Narrow", "Helvetica Neue", sans-serif`; `--f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif`; `--f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace`. Three families: display, body, and mono for dates, stack lists and captions.
@@ -66,7 +65,7 @@ Base 4px. Tokens `--s-1` 4, `--s-2` 8, `--s-3` 12, `--s-4` 16, `--s-5` 24, `--s-
 ### Plate
 - **Structure**: `button.plate > img + span.plate-cap`. Opens the viewer.
 - **Variants**: `.plate` (work figure), `.plate--thumb` (secondary), hero cascade (`.cascade .plate`), `.plate--spec` (a figure set in type when no capture exists: `figure.plate.plate--spec > dl.spec + p.spec-foot + figcaption.plate-cap`; mono `dt`, body `dd`, rule between rows, two columns from 720px).
-- **States**: default; hover lifts 3px with deeper ambient shadow; active returns to 0; focus-visible 2px signal outline, 3px offset. `.plate--spec` is static: no lift, no zoom cursor, not in the viewer.
+- **States**: hero cascade plates lift 3px on hover with the Level 2 shadow; work plates sit flat and darken their border on hover; active returns to 0; focus-visible 2px signal outline, 3px offset. `.plate--spec` is static: no lift, no zoom cursor, not in the viewer.
 - **Accessibility**: real `button`, `alt` on image, caption is visible text.
 - **Motion**: transform and box-shadow, 180ms.
 
@@ -98,10 +97,23 @@ Transform and opacity only. All motion is inside `prefers-reduced-motion: no-pre
 
 ## 7. Depth
 
-- Level 0: ground with a drafting grid behind the hero, masked to fade out.
-- Level 1: plates. `0 1px 2px rgb(var(--shadow) / .10), 0 12px 32px -12px rgb(var(--shadow) / .28)`.
+- Level 0: ground. No grid or pattern behind content.
+- Level 1: hero cascade plates only. `0 1px 2px rgb(var(--shadow) / .10), 0 12px 32px -12px rgb(var(--shadow) / .28)`.
 - Level 2: hovered plate and viewer. `0 2px 4px rgb(var(--shadow) / .12), 0 28px 56px -18px rgb(var(--shadow) / .40)`.
 - The sticky view bar uses the ground colour at 86% with a blur, and a bottom rule.
+
+## Filters
+
+Checked against the anti-slop rulebook (github.com/miqdadbadjuber/anti-slop). These stay out:
+
+- Background grids, dot patterns or blueprint lines behind content.
+- Decorative markers: coloured squares or dots that mark no state. The resume's availability square stays because it marks a real state (open to remote roles); the blog's current-page bar stays because it marks the current page.
+- Uppercase, letter-spaced labels. Labels are sentence case in the body face.
+- Monospace as decoration. Mono is for data only: dates, stack lines, captions, code, the email address.
+- Shadows on everything. Work plates sit flat and darken their border on hover; only the overlapping hero cascade keeps shadows, because overlap needs depth.
+- A stock icon set for links. Social links are words.
+- Bolded lists of three, bold-label list items ("- **Label.** text"), recap sections at the end of posts, and em dashes.
+- Controls under 44px on touch screens (`@media (pointer: coarse)`).
 
 ## Content rules
 
@@ -121,24 +133,24 @@ The blog is two-sided: a fixed identity panel on the left so the author is alway
 - Under 1024px the panel collapses into a sticky 56px bar (32–36px avatar, handle, theme toggle) and the nav moves into `.mnav`, a mono link row under the bar that scrolls with the page.
 
 ### Identity panel
-- Tokens: `--side-bg` `#14181F` (light theme) / `#090B0E` (dark theme, a step below the page ground), `--side-ink` `#E8EBF0`, `--side-ink-2` `#AAB2BF`, `--side-ink-3` `#838C9C`, `--side-rule` `#2A303A` / `#232831`, `--side-signal` `#FF7A33`, `--side-grid` white at 4.5%. The panel is dark in both themes; the 24px drafting grid is its texture.
-- Content top to bottom: avatar (88px on a light plate, ringed rule then signal), handle in Archivo 800 `wdth` 70 at 2.75rem, mono role line, two-line bio, a `dl` of Now / Open to between rules, numbered nav (`01 Writing` … `04 Resume`, current item gets a 2px signal left bar and a signal index), social icon buttons (GitHub, LinkedIn, email, RSS) and the copyright pinned to the bottom. The panel scrolls on its own if the viewport is short.
+- Tokens: `--side-bg` `#14181F` (light theme) / `#090B0E` (dark theme, a step below the page ground), `--side-ink` `#E8EBF0`, `--side-ink-2` `#AAB2BF`, `--side-ink-3` `#838C9C`, `--side-rule` `#2A303A` / `#232831`, `--side-signal` `#FF7A33`, `--side-grid` white at 4.5%. The panel is a flat dark surface in both themes; the avatar and the handle carry its identity, not a texture.
+- Content top to bottom: avatar (88px on a light plate with a 1px rule ring), handle in Archivo 800 `wdth` 70 at 2.75rem, mono role line, two-line bio, a `dl` of Now / Open to between rules, numbered nav (`01 Writing` … `04 Resume`, current item gets a 2px signal left bar and a signal index), social links as words (GitHub, LinkedIn, Email, RSS) and the copyright pinned to the bottom. The panel scrolls on its own if the viewport is short.
 - Theme preference is stored in `localStorage.theme` and applied as `data-theme` on `<html>` before paint, the same key the resume uses.
 
 ### Writing log (home)
 - Page head: `h1.h-page` (Archivo 800 `wdth` 70, `clamp(2.5rem, 6vw, 4rem)`) and one mono line with the count and year range.
-- Topic filter: the seven largest categories as mono text buttons with superscript counts, between rule-strong lines; pressed item underlined in signal; "Every topic" links to `/categories/`. Filtering hides rows and emptied years instantly, no reload.
-- Years are outlined numerals (Archivo 800 `wdth` 70, transparent fill, 1px rule-strong stroke) heading an ordered log. Row: mono date column (4.25rem), title, mono category (right-aligned from 720px, under the title on phones). Hover: signal underline on the title, a 6px signal square in the margin, date turns signal ink.
+- Topic filter: the seven largest categories as mono text buttons (they show counts, so they count as data) with superscript counts, between rule-strong lines; pressed item underlined in signal; "Every topic" links to `/categories/`. Filtering hides rows and emptied years instantly, no reload.
+- Years are outlined numerals (Archivo 800 `wdth` 70, transparent fill, 1px rule-strong stroke) heading an ordered log. Row: mono date column (4.25rem), title, mono category (right-aligned from 720px, under the title on phones). Hover: signal underline on the title and the date turns signal ink.
 
 ### Article
 - Post head: category label, title (Archivo 800 `wdth` 75, `clamp(2.125rem, 5vw, 3.5rem)`), mono meta row (date, reading time), tag chips, closed by a rule-strong line.
 - Prose: Plex Sans 1.0625rem/1.7, measure `--measure` 44rem. H2/H3 in Archivo `wdth` 88. Inline code on sunk; code blocks on surface with a rule border and radius `--r-2`, horizontal scroll, never wrap. Tables scroll inside their own box. Images get a rule border.
 - Tag chip: mono .75rem, rule border, surface fill, radius `--r-1`. Not interactive.
-- Pager: two cards (older, newer), surface with rule-strong border, lift on hover.
+- Pager: two cards (older, newer), surface with rule-strong border; the border darkens on hover.
 
 ### Pages
 - Page head: title plus optional lead. `wide: true` lifts the measure (Projects).
-- Project: rule-strong top border, name link in ink, body ink-2, mono stack line. `.project--fig` adds a link plate above the text (Level 1 shadow, Level 2 on hover).
+- Project: rule-strong top border, name link in ink, body ink-2, mono stack line. `.project--fig` adds a flat link plate above the text; its border darkens on hover.
 - Topics page: mono index of every category with counts, then one log per category (date column shows month and year).
 
 ### Page swaps

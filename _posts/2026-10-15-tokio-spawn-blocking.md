@@ -38,11 +38,11 @@ async fn hash_upload(bytes: Vec<u8>) -> anyhow::Result<String> {
 
 Use it for file and database calls through synchronous libraries, compression, hashing, image work, anything that would hold a worker thread for more than a few hundred microseconds.
 
-Things to know:
+Three things to know:
 
-- **It can't be cancelled.** Calling `abort()` on the handle has no effect once the closure is running. Only a task that hasn't started yet can be stopped.
-- **Shutdown waits for it.** Dropping the runtime waits for every started blocking task to finish. Use `shutdown_timeout` if you need to bound that.
-- **The pool is large.** It defaults to 512 threads, so it won't push back if you flood it with CPU-bound work. Cap parallel heavy jobs with a `Semaphore`, or hand them to Rayon.
+- Once the closure is running, it can't be cancelled. Calling `abort()` on the handle has no effect once the closure is running. Only a task that hasn't started yet can be stopped.
+- Dropping the runtime waits for every started blocking task to finish. Use `shutdown_timeout` if you need to bound that.
+- The blocking pool defaults to 512 threads, so it won't push back if you flood it with CPU-bound work. Cap parallel heavy jobs with a `Semaphore`, or hand them to Rayon.
 
 ## block_on: async code, from sync code
 
@@ -90,14 +90,8 @@ Often the better fix is not to block at all. If the callback can't return a futu
 
 Two catches:
 
-- It **panics on a `current_thread` runtime**, because there is no other worker to hand tasks to. That includes `#[tokio::test]` by default.
+- It panics on a `current_thread` runtime, because there is no other worker to hand tasks to. That includes `#[tokio::test]` by default.
 - Everything else in the same task pauses too, including sibling futures in a `join!`. When in doubt, use `spawn_blocking`.
-
-## Summary
-
-- `spawn_blocking` doesn't block async tasks. That is exactly what it prevents.
-- `block_on` turns a future into a value, but only from a thread that isn't driving async tasks.
-- `block_in_place` is a multi-thread-only shortcut. Reach for it last.
 
 ## References
 

@@ -50,9 +50,13 @@ The command line tells you the project and the command, and the parent process I
 
 ## Fixes
 
-**Run one UAT per engine install, on purpose.** If you are writing a tool that calls UAT, put builds behind a queue keyed by engine path and run them one at a time. Show the queued state in the UI, so users don't read a waiting build as a hung one. This is the real fix; the switches below are for when you don't control every caller.
+### Run one UAT per engine install
 
-**`-WaitForUATMutex`.** Pass it to UAT and, instead of failing, the second instance logs that another UAT is running and waits for it, printing a line every 15 seconds:
+If you are writing a tool that calls UAT, put builds behind a queue keyed by engine path and run them one at a time. Show the queued state in the UI, so users don't read a waiting build as a hung one. This is the real fix; the switches below are for when you don't control every caller.
+
+### Or let UAT wait with -WaitForUATMutex
+
+Pass `-WaitForUATMutex` to UAT and, instead of failing, the second instance logs that another UAT is running and waits for it, printing a line every 15 seconds:
 
 ```bat
 Engine\Build\BatchFiles\RunUAT.bat BuildPlugin -Plugin="C:\Work\MyPlugin\MyPlugin.uplugin" -Package="C:\Out\MyPlugin" -WaitForUATMutex
@@ -60,7 +64,9 @@ Engine\Build\BatchFiles\RunUAT.bat BuildPlugin -Plugin="C:\Work\MyPlugin\MyPlugi
 
 This suits build machines that pick up jobs back to back. It is a poor fit for interactive tools, where the user just sees a build that doesn't move.
 
-**`uebp_UATMutexNoWait=1`.** With this environment variable set, UAT skips the check and runs alongside the other instance. The check exists because two runs can write to the same build and intermediate files, so I would not use this to package two things side by side on one install.
+### Or skip the check with uebp_UATMutexNoWait
+
+With `uebp_UATMutexNoWait=1` set in the environment, UAT skips the check and runs alongside the other instance. The check exists because two runs can write to the same build and intermediate files, so I would not use this to package two things side by side on one install.
 
 ## Sources
 
