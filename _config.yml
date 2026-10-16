@@ -1,19 +1,13 @@
-# Permalinks
+# Permalinks (unchanged so existing post URLs keep working)
 permalink:           pretty
 
-# Setup
+# Site
 title:               mai1015
-tagline:             underdevelopment
-url:                 https://www.mai1015.com/
-paginate:            5
-baseurl:             "/"
-
-# Assets
-#
-# We specify the directory for Jekyll so we can use @imports.
-sass:
-  sass_dir:          _sass
-  style:            :compressed
+tagline:             Engineering notes
+description:         Notes from building backends, infrastructure and developer tools. Kubernetes, Linux, Java, web and more.
+url:                 https://www.mai1015.com
+baseurl:             ""
+timezone:            America/Toronto
 
 # About/contact
 author:
@@ -21,17 +15,30 @@ author:
   url:               https://github.com/mai1015
   email:             i#mai1015.com
 
-# Custom vars
-version:             2.0.0
 github:
   repo:              https://github.com/mai1015
 
-# Gems
-gems:
-  - jekyll-paginate
+links:
+  resume:            /resume/
+  github:            https://github.com/mai1015
+  linkedin:          https://www.linkedin.com/in/zhili-mai-361066136/
+
+plugins:
   - jekyll-gist
   - jekyll-github-metadata
 
 markdown: kramdown
+kramdown:
+  input:             GFM
+  hard_wrap:         false
+  syntax_highlighter: rouge
+
+exclude:
+  - DESIGN.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE.md
+  - vendor
 
 port: 8080

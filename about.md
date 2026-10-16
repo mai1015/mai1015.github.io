@@ -1,25 +1,18 @@
 ---
 layout: page
 title: About
-comments: true
+lead: Software engineer in Toronto, working on backend services, Rust developer tools and games.
 ---
 
-Hello, this is mai1015's blog.
+I'm mai1015. I build backend services, developer tools and game systems.
 
-I am currently a CS student in York University at EECS (ELECTRICAL ENGINEERING AND COMPUTER SCIENCE) department, and here is the [website](http://eecs.lassonde.yorku.ca/).
+At work that means game backends and smart contracts for a game studio. On my own time I build [Forge](https://github.com/ForgeAILab/forge), a local-first workflow engine for coding agents, and [Smith](https://github.com/ForgeAILab/smith), a terminal coding agent on the same Rust runtime. Before that I worked on the Unreal client and creator tools at Helix, and on backend microservices at Dataraction. I studied computer science at York University.
 
-Organization that I currently joined:
+This blog started as a notebook while I was a student. Most posts are fixes I wanted to be able to find again, on Kubernetes, Linux, Java and web front ends. My [resume](/resume/) has the fuller picture, and [Projects](/projects/) lists what I build in the open.
 
-- [Furry.top](https://furry.top)
-  - Website including front and back end development. Services archtiture.
+## Contact
 
-Currently as full stack web developer at Ultgeek.
-
-Feel free to comment and contact me. I happy to hear from you.
-Keep it civil aka don’t be a jerk.
-
-Thanks for reading!
-[RSS feed](/atom.xml)
-
-This template is developed by [@mdo](https://twitter.com/mdo) and edited by mai1015.
-Hosted on **Github Pages**.
+- Email: [i@mai1015.com](mailto:i@mai1015.com)
+- GitHub: [mai1015](https://github.com/mai1015)
+- LinkedIn: [profile](https://www.linkedin.com/in/zhili-mai-361066136/)
+- Feed: [RSS](/atom.xml)

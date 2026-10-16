@@ -1,24 +1,25 @@
 ---
 layout: page
 permalink: /categories/
-title: Categories
+title: Topics
+lead: Every post, grouped by the topic it was filed under.
 ---
-
-
-<div id="archives">
-{% for category in site.categories %}
-  <div class="archive-group">
-    {% capture category_name %}{{ category | first }}{% endcapture %}
-    <div id="#{{ category_name | slugize }}"></div>
-    <p></p>
-    
-    <h3 class="category-head">{{ category_name }}</h3>
-    <a name="{{ category_name | slugize }}"></a>
-    {% for post in site.categories[category_name] %}
-    <article class="archive-item">
-      <h4><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></h4>
-    </article>
-    {% endfor %}
-  </div>
-{% endfor %}
-</div>
+{%- assign cats = site.categories | sort %}
+<p class="topic-index">
+  {%- for c in cats %}<a href="#{{ c[0] | slugify }}">{{ c[0] }} <span>{{ c[1].size }}</span></a>{% endfor %}
+</p>
+{%- for c in cats %}
+<section class="topic" id="{{ c[0] | slugify }}">
+  <h2>{{ c[0] }}</h2>
+  <ul class="post-list">
+    {%- for post in c[1] %}
+    <li>
+      <a class="post-row" href="{{ post.url | relative_url }}">
+        <span class="post-row-title">{{ post.title }}</span>
+        <span class="data post-row-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %-d, %Y' }}</time></span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}

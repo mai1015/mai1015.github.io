@@ -1,28 +1,56 @@
 ---
 layout: default
 ---
+<article class="post">
+  <header class="post-head">
+    <p class="label"><a href="{{ '/categories/' | relative_url }}#{{ page.category | slugify }}">{{ page.category | default: 'Note' }}</a></p>
+    <h1 class="title">{{ page.title }}</h1>
+  </header>
 
-<div class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
-  {{ content }}
-</div>
+  <aside class="post-aside">
+    {%- assign words = content | strip_html | number_of_words %}
+    <dl class="facts">
+      <div><dt class="label">Published</dt><dd class="data"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %-d, %Y' }}</time></dd></div>
+      <div><dt class="label">Reading</dt><dd class="data">{{ words | divided_by: 220 | plus: 1 }} min</dd></div>
+      {%- if page.tags.size > 0 %}
+      <div><dt class="label">Tags</dt><dd><ul class="tags">{% for tag in page.tags %}<li>{{ tag }}</li>{% endfor %}</ul></dd></div>
+      {%- endif %}
+    </dl>
+  </aside>
 
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    {% if site.related_posts == empty %}
-      I cannot find any related posts.
-    {% endif %}
-    {% for post in site.related_posts limit:3 %}
-      <li>
-        <h3>
-          <a href="{{ post.url }}">
-            {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
-          </a>
-        </h3>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {%- assign prev = page.previous %}
+  {%- assign next = page.next %}
+  {%- if prev or next %}
+  <nav class="pager" aria-label="More posts">
+    {%- if prev %}
+    <a class="pager-item" href="{{ prev.url | relative_url }}" rel="prev"><span class="label">Older</span><span class="pager-title">{{ prev.title }}</span></a>
+    {%- else %}<span></span>{% endif %}
+    {%- if next %}
+    <a class="pager-item pager-next" href="{{ next.url | relative_url }}" rel="next"><span class="label">Newer</span><span class="pager-title">{{ next.title }}</span></a>
+    {%- endif %}
+  </nav>
+  {%- endif %}
+
+  {%- if page.comments %}
+  <section class="comments" aria-label="Comments">
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = "{{ page.url | absolute_url }}";
+        this.page.identifier = "{{ page.url }}";
+      };
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://mai1015.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Enable JavaScript to see comments from Disqus.</noscript>
+  </section>
+  {%- endif %}
+</article>
