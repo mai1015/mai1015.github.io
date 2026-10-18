@@ -544,12 +544,12 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
   <div class="wrap">
     <div class="sec-head">
       <h2 id="work-h">Selected work</h2>
-      <p>Three samples from paid work, then independent projects. The rest of my client and employer work is described under Experience.</p>
+      <p>Four samples from paid work, then independent projects. The rest of my client and employer work is described under Experience.</p>
     </div>
 
     <div class="entries">
 
-      <article class="entry" data-t="all backend rust games" aria-labelledby="anamon-h">
+      <article class="entry" data-t="all backend games" aria-labelledby="anamon-h">
         <div class="entry-figs">
           <button class="plate" type="button" data-main data-full="assets/img/anamon-slot.webp" data-cap="Anamon · Slot mini-game">
             <img src="assets/img/anamon-slot-800.webp" srcset="assets/img/anamon-slot-480.webp 480w, assets/img/anamon-slot-800.webp 800w, assets/img/anamon-slot.webp 1600w" sizes="(min-width: 900px) 640px, calc(100vw - 40px)" width="1600" height="1000" loading="lazy" decoding="async" alt="Three phone screens of the Anamon Royale slot mini-game with sample data: the machine signed in with level, XP, a wallet address and 12 spins left; a three-of-a-kind result; and the leaderboard with the player's own rank pinned at the bottom">
@@ -561,18 +561,49 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
           </div>
         </div>
         <div class="entry-text">
-          <p class="label">Contract work · 2024 – present</p>
+          <p class="label">Contract work · 2024 – 2025</p>
           <h3 id="anamon-h">Anamon</h3>
-          <p class="entry-kind">A game with squads, quests, map exploration and tradable cards. I built its backend and worked on the web client.</p>
+          <p class="entry-kind">A creature-collection game on Abstract, an Ethereum layer-2. I built its backend and NFT contracts and worked on the web client.</p>
           <ul class="points">
             <li>Go game services for squads, levels, map exploration, energy, items, quests, rewards, friends and card trading, on PostgreSQL and Redis.</li>
-            <li>A NestJS card backend with persistent match identity, durable retries and safeguards around match finalization and rewards.</li>
-            <li>Rust/Anchor programs on Solana for card packs, rewards, redemption and escrow, with a Rust event stream that decodes game events.</li>
-            <li>Web client work in Next.js: wallet sign-in, the embedded Unity game, a slot mini-game with claim and mint, and pack opening.</li>
+            <li>Upgradeable ERC-721 and ERC-1155 contracts for creatures and avatar items, with royalties and EIP-712 mint vouchers signed by the Go backend.</li>
+            <li>Web client work in Next.js: wallet sign-in, the embedded Unity game, and a slot mini-game with claim and mint.</li>
           </ul>
           <div class="meta">
-            <p class="data">Go · PostgreSQL · Redis · NestJS · MongoDB · BullMQ · Rust · Anchor · Next.js</p>
+            <p class="data">Go · PostgreSQL · Redis · Solidity · Foundry · OpenZeppelin · Next.js</p>
             <p class="links"><span>Slot mini-game shown with sample data in place of the live API. Game art is by the studio's artists.</span></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" data-t="all backend rust games" aria-labelledby="anamon-card-h">
+        <div class="entry-figs">
+          <figure class="plate plate--spec">
+            <dl class="spec">
+              <div><dt>Pack tokens</dt><dd>Token-2022 tokens for unopened packs. Burning one opens the pack.</dd></div>
+              <div><dt>Card NFTs</dt><dd>Metaplex Core assets in one collection per card pool.</dd></div>
+              <div><dt>Redemption</dt><dd>VRF picks each card from the pack's weighted registry.</dd></div>
+              <div><dt>Pack sale</dt><dd>Sells packs for a payment token such as USDC.</dd></div>
+              <div><dt>Buyback</dt><dd>Buys new cards back at per-rarity prices within a set window.</dd></div>
+              <div><dt>Reward pools</dt><dd>Reward tokens spin for VRF-drawn prize payouts.</dd></div>
+              <div><dt>Pack battle</dt><dd>Holds pack-battle deposits in escrow.</dd></div>
+              <div><dt>Arena</dt><dd>Weekly competition with USDC vaults, entry keys and seasonal jackpots.</dd></div>
+            </dl>
+            <p class="spec-foot">Anchor · Token-2022 · Metaplex Core · VRF · Solana</p>
+            <figcaption class="plate-cap"><span>Anamon Card</span><span class="cap-what">Solana program</span></figcaption>
+          </figure>
+        </div>
+        <div class="entry-text">
+          <p class="label">Contract work · 2025 – 2026</p>
+          <h3 id="anamon-card-h">Anamon Card</h3>
+          <p class="entry-kind">The studio's second Anamon game: a collectible card game on Solana. I wrote its Solana program and most of its backend.</p>
+          <ul class="points">
+            <li>An Anchor program for pack tokens, card NFTs, VRF pack opening, buyback, pack battles and the arena, with about 350 tests.</li>
+            <li>A NestJS backend for decks, matches and rewards, with durable retries and safe match finalization, fed by a Rust event stream.</li>
+          </ul>
+          <div class="meta">
+            <p class="data">Rust · Anchor · Solana · NestJS · MongoDB · Redis · BullMQ · Substreams · Next.js</p>
+            <p class="links"><span>The figure lists the program's parts and what each one does.</span></p>
           </div>
         </div>
       </article>
@@ -779,7 +810,7 @@ dialog#viewer::backdrop { background: rgb(var(--scrim) / .76); }
           <ul class="points">
             <li>Designed and built the backend for all of the studio's games, from initial design through delivery.</li>
             <li data-t="all backend">Developed Go game services for player progression, squads, quests, map interactions, rewards and card trading.</li>
-            <li data-t="all rust">Implemented Rust/Anchor card-pack and reward programs, with supporting Rust event-processing modules.</li>
+            <li data-t="all rust">Built the Rust/Anchor program for a Solana card game, with supporting Rust event-processing modules.</li>
             <li data-t="backend" hidden>Worked on a NestJS card-game backend with persistent match identity, retry handling and safeguards around match finalization and reward processing.</li>
             <li data-t="backend" hidden>Developed React and Next.js features for authentication, asset and card presentation, transaction confirmation and recovery flows.</li>
             <li data-t="backend" hidden>Reworked player and exchange-data loading to batch shared database lookups and reduce repeated per-player queries.</li>
